@@ -1,9 +1,9 @@
 // iterators4.rs
 // Execute `rustlings hint iterators4` or use the `hint` watch subcommand for a hint.
 
-// I AM NOT DONE
-
-pub fn factorial(num: u64) -> u64 {
+// Recursive solution.
+//
+pub fn recursive_factorial(num: u64) -> u64 {
     // Complete this function to return the factorial of num
     // Do not use:
     // - return
@@ -13,6 +13,36 @@ pub fn factorial(num: u64) -> u64 {
     // For an extra challenge, don't use:
     // - recursion
     // Execute `rustlings hint iterators4` for hints.
+
+    match num {
+        0 => 1,
+        1 => 1,
+        _ => num * factorial(num - 1)
+    }
+}
+
+// Non-recursive solution.
+//
+pub fn nonrecursive_factorial(num: u64) -> u64 {
+    // Complete this function to return the factorial of num
+    // Do not use:
+    // - return
+    // Try not to use:
+    // - imperative style loops (for, while)
+    // - additional variables
+    // For an extra challenge, don't use:
+    // - recursion
+    // Execute `rustlings hint iterators4` for hints.
+
+    match num {
+        0 => 1,
+        1 => 1,
+        _ => (2u64..=num).fold(1u64, |result, n| result * n)
+    }
+}
+
+pub fn factorial(num: u64) -> u64 {
+    nonrecursive_factorial(num)
 }
 
 #[cfg(test)]
